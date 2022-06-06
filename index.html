@@ -1,0 +1,33 @@
+<!-- 
+In my previous JS studies I did not come across the "defer" attribute.
+Simply put, using defer ensures that a script runs only when all HTML has been parsed. 
+In the example below, the turnBlue script is deferred. 
+It will actually run following the turnYellow script. 
+The final design of the element would thus be blue, not yellow.
+
+
+"When the HTML parser encounters a <script> element with the defer attribute, 
+it loads the script but defers the actual execution of the JavaScript until 
+after it finishes parsing the rest of the elements in the HTML file.
+When a script contains functionality that requires interaction with the DOM, 
+the defer attribute is the way to go. This way, it ensures that the entire HTML 
+file has been parsed before the script is executed." src = codecademy
+
+Testing Github connection.
+
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="style.css">
+    <script id="blue" src="turnBlue.js" defer></script>
+</head>
+
+<body>
+    <p class="centered" id="logo">Codecademy</p>
+
+    <script id="yellow" src="turnYellow.js"></script>
+</body>
+
+</html>
