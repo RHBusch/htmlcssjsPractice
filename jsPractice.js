@@ -244,3 +244,149 @@ function showInfo() {
 }
 
 readMore.addEventListener('click', showInfo);
+
+/* 
+create a function named textChange() that changes the text in the view element to 'Hello, World!'
+
+Next, you must create a function named textReturn() that 
+changes the text of the view element variable back to 'View'.
+
+Assign textChange as an event handler function to a click event 
+fired on the view variable and run your code.
+
+Assign textReturn as an event handler function to a
+click event fired on the close variable. Then run your code and fire the events!
+
+*/
+
+let view = document.getElementById('view-button');
+let close = document.getElementById('close-button');
+let codey = document.getElementById('codey');
+
+let open = function () {
+    codey.style.display = 'block';
+    close.style.display = 'block';
+};
+
+let hide = function () {
+    codey.style.display = 'none';
+    close.style.display = 'none';
+};
+
+view.addEventListener('click', open);
+close.addEventListener('click', hide);
+
+
+let textChange = function () {
+    view.innerHTML = 'Hello World!'
+}
+
+view.addEventListener('click', textChange)
+
+let textReturn = function () {
+    view.innerHTML = 'View'
+}
+
+close.addEventListener('click', textReturn)
+
+
+//Practicing removing event listeners
+
+/*
+Inside the showFortune() function, add a .removeEventListener() to prevent a new fortune 
+from being displayed when a user tries to click the button element.
+*/
+
+let fortunes = ["A beautiful, smart, and loving person will be coming into your life.",
+    "A fresh start will put you on your way.",
+    "A golden egg of opportunity falls into your lap this month.",
+    "A smile is your personal welcome mat.",
+    "All your hard work will soon pay off."
+]
+
+let button = document.getElementById('fortuneButton');
+let fortune = document.getElementById('fortune');
+
+function fortuneSelector() {
+    let randomFortune = Math.floor(Math.random() * fortunes.length);
+    return fortunes[randomFortune];
+}
+
+function showFortune() {
+    fortune.innerHTML = fortuneSelector();
+    button.innerHTML = "Come back tomorrow!";
+    button.style.cursor = "default";
+    button.removeEventListener('click', showFortune)
+}
+
+button.addEventListener('click', showFortune);
+
+/*
+Working on event object properties.
+
+First, add a statement inside the sharePhoto() 
+function that will change the .display property of the event .target to 'none'.
+
+Next, add a statement to the sharePhoto function that will modify the text element to
+ state the number of milliseconds from the DOM loading to the event firing.
+
+ Now, to create functionality for the event object, 
+ assign the sharePhoto function to a click event on the share element.
+*/
+
+
+let social = document.getElementById('social-media');
+let share = document.getElementById('share-button');
+let text = document.getElementById('text');
+
+// Write your code below
+let sharePhoto = function (event) {
+    event.target.style.display = 'none'
+    text.innerHTML = 'This code completed in '
+        + event.timeStamp + ' ms.'
+}
+
+share.addEventListener('click', sharePhoto);
+
+/*
+
+We made a really cool color generator to help people find different colors — try it out! Uh oh, 
+it seems to be broken. We need you to use your new knowledge to fix the website.
+
+Complete the colorChange() function, which will be used as an event handler function,
+ to randomly change the colors of the buttons when specific events are fired on them.
+
+First, add the following variable to the event handler function:
+
+Add a statement that changes the background color of the event target and set it equal to randomColor.
+
+There are two elements that should change color on this web page. First, 
+create an event handler property on the button element that fires when it’s clicked. Use colorChange as the event handler function.
+Then run your code and fire the click event.
+
+Next, create an event handler property on the mysteryButton element. 
+This property needs an event that fires when you rotate the mouse wheel or 
+slide down on the mousepad. Use the MDN Events Reference page to find the correct event type. Assign the same colorChange event handler function to the event handler property.
+
+Then run your code and fire the event.
+
+*/
+
+
+// This variable stores the "Pick a Color" button
+let button = document.getElementById('color-button');
+
+// This variable stores the "Mystery Color" button
+let mysteryButton = document.getElementById('next-button');
+
+// This random number function will create color codes for the randomColor variable
+function colorValue() {
+    return Math.floor(Math.random() * 256);
+}
+
+function colorChange(event) {
+    let randomColor = 'rgb(' + colorValue() + ',' + colorValue() + ',' + colorValue() + ')';
+    event.target.style.backgroundColor = randomColor;
+    button.addEventListener('click', colorChange)
+    mysteryButton.addEventListener('wheel', colorChange)
+}
