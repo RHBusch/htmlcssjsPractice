@@ -391,3 +391,74 @@ function colorChange(event) {
 
 button.addEventListener('click', colorChange);
 mysteryButton.addEventListener('wheel', colorChange);
+
+/* 
+
+Practicing different mouse events 
+
+First, create a function called increaseWidth() that changes 
+the .width of itemOne to any size greater than '400px'
+
+Now, create an event handler for itemOne that will 
+trigger the increaseWidth() function when the mouse hovers on it.
+
+Next, create a function called changeBackground() 
+that changes the .backgroundColor of itemTwo.
+
+Let’s use the changeBackground() function we just created as an event handler for
+ itemTwo that will be triggered when the mouse is released over the element!
+
+ Now, create a function called changeText() that changes the text of 
+ itemThree to 'The mouse has left the element'.
+
+ Create an event handler for itemThree that will
+  fire changeText() function when the mouse leaves the element.
+
+
+  Finally, let’s create a function called showItem() that makes 
+  the itemFive element appear by changing the .display style property to 'block'.
+
+  Now, create an event handler for itemFour that triggers 
+  the showItem() function when the mouse is pressed down on the element.
+*/
+
+// These variables store the boxes on the side
+let itemOne = document.getElementById('list-item-one');
+let itemTwo = document.getElementById('list-item-two');
+let itemThree = document.getElementById('list-item-three');
+let itemFour = document.getElementById('list-item-four');
+let itemFive = document.getElementById('list-item-five');
+let resetButton = document.getElementById('reset-button');
+
+// This function programs the "Reset" button to return the boxes to their default styles
+let reset = function () {
+    itemOne.style.width = ''
+    itemTwo.style.backgroundColor = ''
+    itemThree.innerHTML = 'The mouse must leave the box to change the text'
+    itemFive.style.display = "none"
+};
+resetButton.onclick = reset;
+
+function increaseWidth() {
+    itemOne.style.width = '500px'
+}
+
+function changeBackground() {
+    itemTwo.style.backgroundColor = 'green'
+}
+
+itemOne.addEventListener('mouseover', increaseWidth)
+
+itemTwo.addEventListener('mouseup', changeBackground)
+
+let changeText = function () {
+    itemThree.innerHTML = 'The mouse has left the element'
+}
+
+itemThree.addEventListener('mouseout', changeText)
+
+let showItem = function () {
+    itemFive.style.display = 'block'
+}
+
+itemFour.addEventListener('mousedown', showItem)
