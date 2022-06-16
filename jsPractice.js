@@ -598,3 +598,140 @@ startOver.onclick = function () {
     document.getElementById('word-six').innerHTML = 'YOU!';
     document.getElementById('letter-note-six').innerHTML = 'B';
 }
+
+/*
+Practicing Handlebars Templating 
+ 
+Start by creating your Handlebars template in index.html. 
+Under the opening <head> tag, create a <script> element.
+ Give the script element an attribute of id with a value of 'greet'. 
+ Then, add another attribute, type to the same script, and assign type a value of 'text/x-handlebars-template'.
+ 
+The id will allow you to select the HTML inside the script 
+and the type determines that it is going to be used by the Handlebars object.
+ 
+ 
+In the <script> element you just made, add a Handlebars expression with greeting inside the expression.
+ 
+Now navigate to your main.js file. You want to access the HTML
+ stored in the <script id="greet" type="text/x-handlebars-template"> element to later make a Handlebars template:
+ 
+Access document.getElementById('greet').innerHTML and assign it to a const variable source.
+ 
+ 
+source is a string that contains the raw HTML, but you want to be able to replace the Handlebars expressions with actual values. 
+Sounds like you need a function to replace the Handlebars expressions in the HTML.
+ 
+Call Handlebars.compile() with source and save the returned value in a template using const. 
+template is a function that when passed an object returns a completed/compiled template in a string.
+ 
+ 
+Create a context object to hold values for filling out the Handlebars template.
+ 
+Create an object context and save it as a const variable.
+ Add a key of greeting with the value 'Hello World!'
+ 
+ To replace the Handlebars expressions with the values in context, 
+ call template() with an argument of context and save the value to a const variable compiledHtml.
+ 
+ Now you have to select the element that will contain the templated HTML.
+ 
+Create a variable named fill using the const keyword and assign it document.getElementById('hello')
+ 
+It’s time to add the compiled template HTML to the web page.
+ 
+Assign compiledHtml to fill‘s innerHTML property.
+ 
+Once you pass the checkpoint, the browser will render ‘Hello World!’.
+ 
+*/
+
+const source = document.getElementById('greet').innerHTML;
+
+const template = Handlebars.compile(source);
+
+const context = {
+    greeting: 'Hello World!'
+}
+
+const compiledHtml = template(context)
+
+const fill = document.getElementById('hello');
+
+fill.innerHTML = compiledHtml;
+
+// More handlebars practice using the {{if}} helper 
+
+/*
+In the index.html file, locate the <script> that has an id of 'ifHelper'.
+ Inside the located <script> element, add an {{if}} helper block. 
+ Provide an argument of opinion to the opening {{if}} expression.
+
+
+Inside the {{if}} block, add an opening and closing <p> tag. 
+Inside the created <p> add in the text (with the quotation marks): 
+"The correct way to say 'GIF' is GIF!".
+
+This template will now include a <p> element that says 
+"The correct way to say 'GIF' is GIF!" if opinion is truthy.
+
+Go to main.js. Some of the boilerplate code has been provided for you. 
+However, you still have to create the object that you want to pass into template.
+
+In a line below template, declare a variable named context using the keyword const. 
+Then, assign to context an object that has a property of opinion and a value of true.
+
+Finally, in the last line of main.js, assign debateElement‘s .innerHTML property the value of compiledHtml.
+
+Run the code and you should see some text appear on the browser!
+
+*/
+
+/*
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>GIF!</title>
+    <script src="handlebars.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="public/style.css">
+    <!-- Add an {{if}} helper block in the script element below-->
+      <script id="ifHelper" type="text/x-handlebars-template">
+ {{#if opinion}}
+ <p>"The correct way to say 'GIF' is GIF!"</p>
+ {{/if}}
+    </script>    
+  </head>
+  <body>
+    <div class="bg">
+      <img class="bg-convo" src="https://content.codecademy.com/courses/learn-handlebars/handlebars%20if.svg">
+    </div>
+    <div id="debate">
+    </div>
+  </body>
+  <script src="public/main.js" type="text/javascript"></script>
+</html>
+
+*/
+
+const source = document.getElementById('ifHelper').innerHTML;
+const template = Handlebars.compile(source);
+
+const context = {
+    opinion: true
+}
+const compiledHtml = template(context);
+
+const debateElement = document.getElementById('debate');
+
+debateElement.innerHTML = compiledHtml;
+
+//Practicing if else with handlebars
+
+<script id="ifHelper" type="text/x-handlebars-template">
+    {{ #if opinion }}
+    <p>"The correct way to say GIF is GIF!"</p>
+    {{ else}}<p>"There's no right way to say GIF!'"</p>
+    {{/if}}
+</script> 
