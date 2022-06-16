@@ -490,7 +490,10 @@ function down() {
 document.addEventListener('keydown', up)
 document.addEventListener('keyup', down)
 
-// Piano Keys Project 
+/*
+Crafting an interactive project leveraging DOM events and mouse interactivity. 
+
+*/
 
 
 // The keys and notes variables store the piano keys
