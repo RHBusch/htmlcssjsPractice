@@ -798,3 +798,28 @@ for (let i = 0; i < 99; i += 1) {
     }
     console.log(i)
 }
+
+// Practicing the "each this" templating in Handlebars 
+<script id="languagesTemp" type="text/x-handlebars-template">
+    {{ #each languages }}
+    <div class="card">
+        <p>I should learn {{ this.name }}.</p>
+    </div>
+    {{/ each}}
+</script>
+
+const source = document.getElementById('languagesTemp').innerHTML;
+const template = Handlebars.compile(source);
+
+const context = {
+    languages: [
+        { name: 'HTML' },
+        { name: 'CSS' },
+        { name: 'JavaScript' }
+    ]
+};
+
+const compiledHtml = template(context);
+
+const displayGoals = document.getElementById('goals');
+displayGoals.innerHTML = compiledHtml;
