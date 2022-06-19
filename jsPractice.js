@@ -735,3 +735,66 @@ debateElement.innerHTML = compiledHtml;
     {{ else}}<p>"There's no right way to say GIF!'"</p>
     {{/if}}
 </script> 
+
+
+// Practicing Each - This in Handlebars Templating 
+
+/* 
+
+In index.html, in the <script> element with an id of eachHelper, 
+create an {{each}} helper block. Use {{#each}} to start the block and 
+{{/each}} to end the block. Add an argument of newArray to the starting expression.
+
+Inside the {{each}} block, add a <div> element with a class attribute of "block". 
+The content of the <div> will be {{this}}.
+
+Before you run the code, navigate to main.js and find the newArray property of the context object.
+
+Notice that the newArray property contains an array of the letters 'a', 'b', and 'c'.
+
+Run your code. If all went well you’ll now have 3 blocks on the webpage!
+
+Just to showcase how useful {{this}} and {{each}} can be, delete 
+the elements inside the newArray. Instead of letters, 
+filled array with elements of numbers starting with 1 and ending in 10.
+
+Run your code. This time, if all went well, your letters will be replaced 
+with 10 blocks that increase from 1 to 10!
+
+
+*/
+
+
+<script id="eachHelper" type="text/x-handlebars-template">
+{{#each newArray}}
+<div class="block">
+  {{this}}
+  </div>
+{{/each}}
+
+</script>
+
+const source = document.getElementById('eachHelper').innerHTML;
+const template = Handlebars.compile(source);
+
+const context = {
+    newArray: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
+};
+
+const compiledHtml = template(context);
+
+const displayElements = document.getElementById('display');
+displayElements.innerHTML = compiledHtml;
+
+//practing the break keyword in a loop
+
+/* Within a loop, the break keywod may be used to exit 
+the loop immediately, continuing execution after the loop body. Here, the break keyword
+is used to exit the loop when i is greater than 5 */
+
+for (let i = 0; i < 99; i += 1) {
+    if (i > 5) {
+        break;
+    }
+    console.log(i)
+}
