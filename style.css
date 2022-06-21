@@ -1,0 +1,36 @@
+header {
+    padding-top: 3%;
+    min-height: 70px;
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+
+}
+
+.branding {
+    float: left;
+}
+
+.branding h1 {
+    font-weight: normal;
+}
+
+nav {
+    float: right;
+}
+
+.navbar {
+    margin-top: 15%;
+}
+
+.navbar li {
+    display: inline-block;
+    padding: 0 5px;
+}
+
+.navbar li a {
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: normal;
+}
