@@ -868,7 +868,7 @@ const source = document.getElementById('languagesTemp').innerHTML;
         const displayGoals = document.getElementById('goals');
         displayGoals.innerHTML = compiledHtml;
 
- //Practicing Handlebars 
+        //Practicing Handlebars 
 
         const context = {
             title: 'Welcome to Musicon',
@@ -903,12 +903,12 @@ const source = document.getElementById('languagesTemp').innerHTML;
             ]
         };
 
-        const templateElement = document.getElementById('templateHB');
+        const templateElement = document.getElementById('templateHB'); // identifying the id for the template
 
-        const templateSource = templateElement.innerHTML;
+        const templateSource = templateElement.innerHTML; //identifying the template element to be compiled
 
-        const template = Handlebars.compile(templateSource);
+        const template = Handlebars.compile(templateSource); //compiling the template
 
-        const compiledHtml = template(context);
+        const compiledHtml = template(context); //assigning the new values based on the context object
 
-        document.getElementById('information').innerHTML = compiledHtml;
+        document.getElementById('information').innerHTML = compiledHtml; //Displaying the new values 
