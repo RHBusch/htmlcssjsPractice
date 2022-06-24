@@ -912,3 +912,29 @@ const source = document.getElementById('languagesTemp').innerHTML;
         const compiledHtml = template(context); //assigning the new values based on the context object
 
         document.getElementById('information').innerHTML = compiledHtml; //Displaying the new values 
+
+//Practicing handlebars 
+        <script src="handlebars.min.js"></script>
+    <script id="templateHB" type="text/x-handlebars-template">
+          {{#each instruments}}
+            <article class="instrument">
+                <img
+                  class="image"
+                  src= "{{this.image}}"
+                  alt="{{this.name}}"
+                />
+                <section class="details">
+                  <h2 class="name">{{this.name}}</h2>
+                  <p class="description">
+                    {{this.description}}
+                  </p>
+     {{#if sale}}             
+      <p class="price"><del>Price:{{this.price}}</del></p>
+      <p class="sale">On Sale!{{this.sale}}</p>
+      {{else}}
+      <p class ="price">{{this.price}}</p>
+      {{/if}}
+       </section>
+              </article>
+              {{/each}}
+    </script>
